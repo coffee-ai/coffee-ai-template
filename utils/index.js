@@ -49,7 +49,7 @@ To get started:
   ${yellow(
     `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(
       data
-    )}${lintMsg(data)}npm run dev`
+    )}npm run dev`
   )}
   
 Documentation can be found at https://vuejs-templates.github.io/webpack
