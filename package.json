@@ -1,0 +1,11 @@
+{
+  "name": "coffee-cli-template",
+  "version": "1.0.0",
+  "license": "ISC",
+  "description": "",
+  "scripts": {
+  },
+  "devDependencies": {
+    "coffee-cli": "^1.0.0"
+  }
+}
