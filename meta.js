@@ -30,25 +30,21 @@ module.exports = {
   
   prompts: {
     name: {
-      when: 'isNotTest',
       type: 'string',
       required: true,
       message: 'Project name',
     },
     description: {
-      when: 'isNotTest',
       type: 'string',
       required: false,
       message: 'Project description',
       default: 'A component project',
     },
     author: {
-      when: 'isNotTest',
       type: 'string',
       message: 'Author',
     },
     autoInstall: {
-      when: 'isNotTest',
       type: 'list',
       message:
         'Should we run `npm install` for you after the project has been created? (recommended)',
