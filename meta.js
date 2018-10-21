@@ -69,7 +69,7 @@ module.exports = {
   },
   complete: function(data, { chalk }) {
     const green = chalk.green
-
+    console.log(data)
     sortDependencies(data, green)
 
     const cwd = path.join(process.cwd(), data.inPlace ? '' : data.destDirName)
