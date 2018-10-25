@@ -1,4 +1,4 @@
-# coffee-cli-template
+# coffee-ai-template
 
 > A tool for webpack and component.
 
@@ -6,5 +6,5 @@
 
 
 ``` bash
-coffee-cli init myproject
+coffee-ai init myproject
 ```
