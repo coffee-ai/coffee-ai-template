@@ -3,9 +3,7 @@
   "description": "{{ description }}",
   "version": "0.0.0",
   "main": "libs/index.js",
-  "keywords": [
-    "canvas"
-  ],
+  "keywords": [],
   "author": "{{ author }}",
   "license": "ISC",
   "files": [
