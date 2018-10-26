@@ -8,6 +8,9 @@
   ],
   "author": "{{ author }}",
   "license": "ISC",
+  "files": [
+    "libs"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --inline --progress --config build/webpack.dev.config.js",
