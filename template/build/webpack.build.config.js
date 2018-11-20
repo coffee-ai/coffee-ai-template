@@ -9,7 +9,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssPlugin = require('mini-css-extract-plugin')
 const entry = require('../build.json')
-const pack = require('../package.json')
+const {version} = require('../package.json')
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: entry,
@@ -37,7 +37,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       }
     ]
   },
-  externals: /^(axios|vue)/i,
+  externals: util.getExternals(entry),
   mode: 'production',
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   optimization: {

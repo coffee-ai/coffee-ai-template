@@ -1,4 +1,42 @@
 const MiniCssPlugin = require('mini-css-extract-plugin')
+const {dependencies} = require('../package.json')
+
+exports.getExternals = (entry) => {
+  const externals = {};
+  Object.keys(entry).forEach(key => {
+  });
+  Object.keys(dependencies).forEach(key => {
+    externals[key] = key;
+  });
+  return externals;
+}
+
+exports.getBundleCacheGroup = function(bundle) {
+  const cacheGroups = {};
+  const chunkNames = Object.keys(bundle);
+  const chunkNameSet = new Set(chunkNames);
+
+  chunkNames.forEach(name => {
+    cacheGroups[name] = {
+      name,
+      chunks: 'initial',
+      minSize: 0,
+      minChunks: 1,
+      reuseExistingChunk: true,
+      priority: 10000,
+      enforce: true,
+      test(module, chunks) {
+        if (module.depth === 0) return false;
+        const validChunks = chunks.filter(chunk => chunkNameSet.has(chunk.name));
+        if (!validChunks.length) return false;
+        const validChunkSet = new Set(validChunks.map(chunk => chunk.name));
+        const chunkName = chunkNames.find(name => validChunkSet.has(name));
+        return chunkName === name;
+      }
+    }
+  });
+  return cacheGroups;
+}
 
 exports.createNotifierCallback = () => {
   const notifier = require('node-notifier')

@@ -9,14 +9,15 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssPlugin = require('mini-css-extract-plugin')
 const entry = require('../component.json')
-const pack = require('../package.json')
+const {version} = require('../package.json')
+
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: entry,
   output: {
     path: config.component.assetsRoot,
     publicPath: config.component.assetsPublicPath,
-    filename: '[name].js',
+    filename: '[name]/index.js',
     chunkFilename: '[name]/index.js',
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -28,7 +29,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       usePostCSS: true
     })
   },
-  externals: /^(axios|vue)/i,
+  externals: util.getExternals(entry),
   mode: 'production',
   devtool: config.component.productionSourceMap ? config.component.devtool : false,
   optimization: {
